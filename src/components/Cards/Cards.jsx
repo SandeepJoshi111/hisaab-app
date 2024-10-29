@@ -10,7 +10,7 @@ const Cards = ({
   currentBalance,
 }) => {
   return (
-    <div>
+    <div className="container">
       <Row className="my-row">
         <Card bordered={true} className="my-card">
           <h2>Current Balance</h2>

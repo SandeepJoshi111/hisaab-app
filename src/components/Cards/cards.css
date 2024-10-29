@@ -1,6 +1,5 @@
 .my-card {
   box-shadow: var(--shadow);
-  margin: 2rem;
   border-radius: 0.5rem;
   min-width: 200px;
   flex: 1;
@@ -10,8 +9,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 2rem auto;
   flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem 0;
 }
 
 .my-card p {

@@ -1,15 +1,13 @@
 .charts-wrapper {
   display: flex;
   height: auto;
-  align-items: flex-start;
-  margin: 2rem;
   gap: 1rem;
 }
 
 .charts-line,
 .charts-pie {
   border-radius: 0.5rem;
-  padding: 2rem;
+  padding: 2.5rem;
   box-shadow: var(--shadow);
   min-height: 400px;
   display: flex;
@@ -17,25 +15,32 @@
   align-items: center;
   min-width: 250px;
 }
-
-.charts-line {
-  width: 70%;
-  flex: 1;
-}
-
-.charts-pie {
-  width: 30%;
-  flex: 1;
+@media (max-width: 1440px) {
+  .charts-wrapper {
+    flex-direction: column;
+  }
+  .charts-line,
+  .charts-pie {
+    padding: 1.5rem;
+  }
 }
 
 @media (max-width: 1080px) {
   .charts-wrapper {
     flex-direction: column;
   }
+  .charts-line,
+  .charts-pie {
+    padding: 1.5rem;
+  }
 }
 
 @media (max-width: 768px) {
   .charts-wrapper {
     flex-direction: column;
+  }
+  .charts-line,
+  .charts-pie {
+    padding: 1rem;
   }
 }

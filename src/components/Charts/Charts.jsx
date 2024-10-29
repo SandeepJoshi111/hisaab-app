@@ -75,18 +75,20 @@ const Charts = ({ sortedTransactions, currentBalance }) => {
   };
 
   return (
-    <div className="charts-wrapper">
-      <div className="charts-line">
-        <h2>Your Balance Over Time</h2>
-        <Line {...balanceConfig} />
-      </div>
-      <div className="charts-pie">
-        <h2>Total Spending</h2>
-        {spendingData.length === 0 ? (
-          <p>Seems like you haven&apos;t spent anything till now...</p>
-        ) : (
-          <Pie {...spendingConfig} />
-        )}
+    <div className="container">
+      <div className="charts-wrapper">
+        <div className="charts-line">
+          <h2>Your Balance Over Time</h2>
+          <Line {...balanceConfig} />
+        </div>
+        <div className="charts-pie">
+          <h2>Total Spending</h2>
+          {spendingData.length === 0 ? (
+            <p>Seems like you haven&apos;t spent anything till now...</p>
+          ) : (
+            <Pie {...spendingConfig} />
+          )}
+        </div>
       </div>
     </div>
   );

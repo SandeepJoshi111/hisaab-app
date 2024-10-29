@@ -40,8 +40,21 @@ input {
   font-size: 1.2rem;
 }
 
-/* Medium screens */
+.container {
+  padding: 0 40px;
+  margin: auto;
+}
+
+/* For smaller screens */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 5px;
+  }
+}
 @media (max-width: 768px) {
+  .container {
+    padding: 0 30px;
+  }
   .no-transactions-image {
     width: 60%; /* Reduce image size on medium screens */
     margin: 2rem;
@@ -52,8 +65,11 @@ input {
   }
 }
 
-/* Small screens */
+/* For extra small screens */
 @media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
   .no-transactions-image {
     width: 50%; /* Further reduce image size for mobile screens */
     margin: 1rem;

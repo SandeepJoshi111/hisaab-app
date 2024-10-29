@@ -53,16 +53,15 @@ const TransactionsTable = ({ transactions }) => {
   });
 
   return (
-    <>
-      <div style={{ width: "100%" }}>
+    <div className="container">
+      <div>
         <div
           style={{
             display: "flex",
             justifyContent: "space-between",
             gap: "1rem",
             alignItems: "center",
-            marginBottom: "1rem",
-            padding: "0 2rem",
+            margin: "2rem 0",
           }}
         >
           <div className="input-flex">
@@ -107,7 +106,7 @@ const TransactionsTable = ({ transactions }) => {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
