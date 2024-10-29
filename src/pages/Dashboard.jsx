@@ -1,9 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import Cards from "../components/Cards/Cards";
 import Header from "../components/Header/Header";
 import AddExpenseModal from "../components/Modals/AddExpenseModal";
 import AddIncomeModal from "../components/Modals/AddIncomeModal";
-import moment from "moment";
 import { addDoc, collection, getDocs, query } from "firebase/firestore";
 import { auth, db } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -40,7 +40,7 @@ const Dashboard = () => {
   const onFinish = (values, type) => {
     const newTransaction = {
       type: type,
-      date: moment(values.date).format("YYYY-MM-DD"),
+      date: values.date.format("YYYY-MM-DD"),
       amount: parseFloat(values.amount),
       tag: values.tag,
       name: values.name,
@@ -83,7 +83,7 @@ const Dashboard = () => {
   }
   useEffect(() => {
     fetchTransactions();
-  }, []);
+  }, [user]);
 
   const calculateBalance = () => {
     let incomeTotal = 0;
@@ -105,6 +105,7 @@ const Dashboard = () => {
   useEffect(() => {
     calculateBalance();
   }, [transactions]);
+
   return (
     <div>
       <Header />
