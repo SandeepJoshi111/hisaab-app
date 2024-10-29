@@ -9,6 +9,8 @@ import { auth, db } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
 import TransactionsTable from "../components/TransactionsTable/TransactionsTable";
+import Charts from "../components/Charts/Charts";
+import NoTransactions from "../components/NoTransactions";
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
@@ -106,6 +108,9 @@ const Dashboard = () => {
     calculateBalance();
   }, [transactions]);
 
+  const sortedTransactions = transactions.sort((a, b) => {
+    return new Date(a.date) - new Date(b.date);
+  });
   return (
     <div>
       <Header />
@@ -120,6 +125,11 @@ const Dashboard = () => {
             showExpenseModal={showExpenseModal}
             showIncomeModal={showIncomeModal}
           />
+          {transactions.length != 0 ? (
+            <Charts sortedTransactions={sortedTransactions} />
+          ) : (
+            <NoTransactions />
+          )}
           <AddExpenseModal
             isExpenseModalVisible={isExpenseModalVisible}
             handleExpenseCancel={handleExpenseCancel}
