@@ -32,10 +32,16 @@
   .charts-wrapper {
     flex-direction: column;
   }
+  .charts-line {
+    width: 85%;
+  }
 }
 
 @media (max-width: 768px) {
   .charts-wrapper {
     flex-direction: column;
+  }
+  .charts-pie {
+    width: 85%;
   }
 }

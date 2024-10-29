@@ -1,8 +1,21 @@
 /* eslint-disable react/prop-types */
 import { Line, Pie } from "@ant-design/charts";
 import "./charts.css";
+import { useEffect, useState } from "react";
 
 const Charts = ({ sortedTransactions }) => {
+  const [chartWidth, setChartWidth] = useState(window.innerWidth * 0.4);
+
+  // Update chart width on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setChartWidth(window.innerWidth * 0.8);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   // Calculate running balance for each date
   let currentBalance = 0;
   const balanceData = sortedTransactions.map((item) => {
@@ -28,6 +41,7 @@ const Charts = ({ sortedTransactions }) => {
     yField: "balance",
     smooth: true,
     height: 300,
+    width: chartWidth,
     xAxis: {
       type: "timeCat",
       title: { text: "Date" },
@@ -43,13 +57,13 @@ const Charts = ({ sortedTransactions }) => {
     colorField: "tag",
     angleField: "amount",
     radius: 0.8,
-    width: 500,
+    width: chartWidth,
   };
 
   return (
     <div className="charts-wrapper">
       <div className="charts-line">
-        <h1>Your Balance Over Time</h1>
+        <h2>Your Balance Over Time</h2>
         <Line {...balanceConfig} />
       </div>
       <div className="charts-pie">
