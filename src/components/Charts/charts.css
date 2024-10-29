@@ -33,7 +33,7 @@
     flex-direction: column;
   }
   .charts-line {
-    width: 85%;
+    width: 80%;
   }
 }
 
@@ -42,6 +42,6 @@
     flex-direction: column;
   }
   .charts-pie {
-    width: 85%;
+    width: 80%;
   }
 }
