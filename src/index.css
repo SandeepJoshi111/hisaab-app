@@ -19,3 +19,47 @@ body {
 input {
   font-family: "Montserrat", sans-serif;
 }
+
+.no-transactions-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.no-transactions-image {
+  width: 80%;
+  max-width: 400px;
+  margin: 4rem;
+}
+
+.no-transactions-text {
+  font-size: 1.2rem;
+}
+
+/* Medium screens */
+@media (max-width: 768px) {
+  .no-transactions-image {
+    width: 60%; /* Reduce image size on medium screens */
+    margin: 2rem;
+  }
+
+  .no-transactions-text {
+    font-size: 1rem; /* Reduce font size for smaller screens */
+  }
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+  .no-transactions-image {
+    width: 50%; /* Further reduce image size for mobile screens */
+    margin: 1rem;
+  }
+
+  .no-transactions-text {
+    font-size: 0.9rem; /* Further reduce font size for mobile */
+  }
+}

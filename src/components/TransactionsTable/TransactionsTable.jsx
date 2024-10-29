@@ -100,7 +100,11 @@ const TransactionsTable = ({ transactions }) => {
             </Radio.Group>
           </div>
 
-          <Table columns={columns} dataSource={sortedTransactions} />
+          <Table
+            columns={columns}
+            dataSource={sortedTransactions}
+            scroll={{ x: "max-content" }}
+          />
         </div>
       </div>
     </>
