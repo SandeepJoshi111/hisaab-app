@@ -3,7 +3,7 @@ import { Line, Pie } from "@ant-design/charts";
 import "./charts.css";
 import { useEffect, useState } from "react";
 
-const Charts = ({ sortedTransactions }) => {
+const Charts = ({ sortedTransactions, currentBalance }) => {
   const [chartWidth, setChartWidth] = useState(window.innerWidth * 0.4);
 
   // Update chart width on window resize
@@ -17,11 +17,23 @@ const Charts = ({ sortedTransactions }) => {
   }, []);
 
   // Calculate running balance for each date
-  let currentBalance = 0;
+  let runningBalance = 0;
   const balanceData = sortedTransactions.map((item) => {
-    currentBalance += item.type === "income" ? item.amount : -item.amount;
-    return { date: item.date, balance: currentBalance };
+    runningBalance += item.type === "income" ? item.amount : -item.amount;
+    return {
+      date: item.date,
+      balance: runningBalance,
+    };
   });
+
+  // Add the current balance as the last data point
+  const lastDate =
+    sortedTransactions.length > 0
+      ? sortedTransactions[sortedTransactions.length - 1].date
+      : null;
+  if (lastDate) {
+    balanceData.push({ date: lastDate, balance: currentBalance });
+  }
 
   const spendingData = sortedTransactions
     .filter((transaction) => transaction.type === "expense")
@@ -49,6 +61,8 @@ const Charts = ({ sortedTransactions }) => {
     yAxis: {
       title: { text: "Balance" },
     },
+    color: (datum) =>
+      datum.balance === currentBalance ? "#FFD700" : "#1890FF", // Highlight current balance in gold
   };
 
   // Pie chart configuration for total expenses by tag

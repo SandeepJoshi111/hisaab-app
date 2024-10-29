@@ -1,11 +1,14 @@
 /* eslint-disable react/prop-types */
 import { Button, Modal, Form, Input, DatePicker, Select } from "antd";
+
 function AddExpenseModal({
   isExpenseModalVisible,
   handleExpenseCancel,
   onFinish,
+  currentBalance, // Receive current balance
 }) {
   const [form] = Form.useForm();
+
   return (
     <Modal
       style={{ fontWeight: 600 }}
@@ -41,6 +44,18 @@ function AddExpenseModal({
           name="amount"
           rules={[
             { required: true, message: "Please input the expense amount!" },
+            {
+              validator: (_, value) => {
+                if (value > currentBalance) {
+                  return Promise.reject(
+                    new Error(
+                      `Expense amount cannot exceed current balance of Rs.${currentBalance}.`
+                    )
+                  );
+                }
+                return Promise.resolve();
+              },
+            },
           ]}
         >
           <Input type="number" className="custom-input" />
@@ -50,7 +65,10 @@ function AddExpenseModal({
           label="Date"
           name="date"
           rules={[
-            { required: true, message: "Please select the expense date!" },
+            {
+              required: true,
+              message: "Please select the expense date!",
+            },
           ]}
         >
           <DatePicker className="custom-input" format="YYYY-MM-DD" />

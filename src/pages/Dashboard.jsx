@@ -126,7 +126,10 @@ const Dashboard = () => {
             showIncomeModal={showIncomeModal}
           />
           {transactions.length != 0 ? (
-            <Charts sortedTransactions={sortedTransactions} />
+            <Charts
+              sortedTransactions={sortedTransactions}
+              currentBalance={currentBalance}
+            />
           ) : (
             <NoTransactions />
           )}
@@ -134,6 +137,7 @@ const Dashboard = () => {
             isExpenseModalVisible={isExpenseModalVisible}
             handleExpenseCancel={handleExpenseCancel}
             onFinish={onFinish}
+            currentBalance={currentBalance}
           />
           <AddIncomeModal
             isIncomeModalVisible={isIncomeModalVisible}
